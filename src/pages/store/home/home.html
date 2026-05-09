@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Food Store</title>
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+  
+  <header class="home-header">
+    <h1>Food Store</h1>
+    <button id="btn-ir-carrito" class="btn-ir-carrito">Ver Carrito</button>
+  </header>
+
+  <main class="home-main">
+    
+    <aside class="home-sidebar">
+      <h3>Categorías</h3>
+      <div id="contenedor-categorias"></div>
+    </aside>
+
+    <section class="home-catalog">
+      <input type="text" id="input-busqueda" class="search-input" placeholder="Buscar productos por nombre...">
+      
+      <div id="contenedor-productos" class="products-grid"></div>
+    </section>
+
+  </main>
+
+  <script type="module" src="./home.ts"></script>
+</body>
+</html>
