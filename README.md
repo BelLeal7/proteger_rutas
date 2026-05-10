@@ -1,12 +1,16 @@
-# Proyecto: Protección de Rutas (Educativo)
+# 🍔 Proyecto: Food Store - E-commerce de Comida
 
 ## ✍️ Descripción
 
-Este es un proyecto de demostración creado con fines educativos para ilustrar un mecanismo básico de protección de rutas en el lado del cliente (frontend) utilizando **Vite** y **TypeScript**.
-
-El objetivo es mostrar cómo se puede restringir el acceso a ciertas páginas según el rol de un usuario (por ejemplo, `ADMIN` o `CLIENT`).
+Este proyecto es una aplicación de catálogo y carrito de compras para una tienda de alimentos, desarrollada con **Vite** y **TypeScript**. La aplicación permite navegar por diferentes categorías de productos, realizar búsquedas en tiempo real y gestionar un carrito de compras interactivo.
 
 ---
+### Funcionalidades principales:
+- **Catálogo Dinámico**: Listado de productos renderizados a partir de una base de datos local predefinida (`src/data/data.ts`).
+- **Filtrado por Categorías**: Navegación intuitiva mediante botones laterales que filtran los productos según su categoria (Pizzas, Hamburguesas, Bebidas, etc.).
+- **Buscador en Tiempo Real**: Filtrado dinámico de productos por nombre mediante una barra de búsqueda que ignora mayúsculas y minúsculas.
+- **Carrito de Compras**: Gestión de pedidos con cálculo automático de subtotales por producto y suma del total general.
+- **Persistencia de Datos**: Los productos agregados al carrito se mantienen guardados utilizando `localStorage`, evitando que se pierdan al recargar la página o navegar entre el catálogo y el carrito.
 
 ## ⚠️ ¡Importante! Nivel de Seguridad
 
@@ -49,35 +53,30 @@ pnpm dev
 
 La aplicación estará disponible en la URL que aparezca en la terminal (generalmente `http://localhost:5173`).
 
----
-
-## ⚙️ ¿Cómo Funciona la Protección de Rutas?
-
-El mecanismo es simple y se gestiona desde el código TypeScript en la carpeta `src/utils`:
-
-1.  **Inicio de Sesión**: Cuando un usuario se "loguea", su información (incluido su rol) se guarda como un string JSON en `localStorage`.
-2.  **Carga de Página Protegida**: Cada vez que se intenta cargar una página protegida (ej. la página de Administrador), se ejecuta un script de verificación (`checkAuhtUser` en `src/utils/auth.ts`).
-3.  **Verificación**: El script comprueba:
-    - Si existe un usuario en `localStorage`. Si no, redirige al login.
-    - Si el rol del usuario guardado coincide con el rol requerido para acceder a esa página. Si no coincide, lo redirige a una página de acceso denegado o a su "home" correspondiente.
-4.  **Cierre de Sesión (Logout)**: Al cerrar sesión, la información del usuario se elimina de `localStorage`.
-
----
 
 ## 📁 Estructura del Proyecto
 
 ```
 /
+├── public/                     # Imágenes estáticas de los productos (ej: pizza.jpg)
 ├── src/
-│   ├── pages/                # Contiene las páginas de la aplicación
-│   │   ├── admin/            # Páginas solo para administradores
-│   │   ├── auth/             # Páginas de autenticación (login, registro)
-│   │   └── client/           # Páginas solo para clientes
-│   ├── types/                # Define las interfaces y tipos (IUser, Rol)
-│   └── utils/                # Lógica reutilizable
-│       ├── auth.ts           # Función principal de verificación de rol y sesión
-│       ├── localStorage.ts   # Funciones para leer/escribir en localStorage
-│       └── navigate.ts       # Función para redirigir al usuario
-├── package.json              # Dependencias y scripts
-└── README.md                 # Este archivo
+│   ├── data/
+│   │   └── data.ts             # Archivo principal de datos (PRODUCTS y getCategories())
+│   ├── pages/
+│   │   └── store/              # Vistas de la aplicación
+│   │       ├── home/           
+│   │       │   ├── home.html   # Catálogo de productos
+│   │       │   └── home.ts     # Lógica: render, búsqueda, filtros
+│   │       └── cart/           
+│   │           ├── cart.html   # Vista del carrito
+│   │           └── cart.ts     # Lógica: render, cantidades, total
+│   ├── types/
+│   │   ├── product.ts          # Interfaces Product y CartItem
+│   │   └── categoria.ts        # Interface Icategoria   # Definiciones e interfaces de TypeScript
+│   ├── utils/                  # Funciones de utilidad general
+│   ├── style.css               # Hoja de estilos global de la tienda
+│   └── main.ts                 # Punto de entrada de scripts
+├── index.html                  # Punto de entrada principal HTML
+├── package.json                # Dependencias y configuración de scripts
+└── README.md                   # Este archivo
 ```

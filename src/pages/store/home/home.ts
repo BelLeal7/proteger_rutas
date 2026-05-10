@@ -13,6 +13,7 @@ const contenedorCategorias = document.querySelector<HTMLDivElement>(
 const btnIrCarrito =
   document.querySelector<HTMLButtonElement>("#btn-ir-carrito");
 
+  
 function renderProductos(lista: Product[]) {
   if (!contenedorProductos) return;
   contenedorProductos.innerHTML = "";
@@ -56,7 +57,7 @@ function renderCategorias() {
   contenedorCategorias.innerHTML = "";
 
   const btnTodas = document.createElement("button");
-  btnTodas.textContent = "Todas";
+  btnTodas.textContent ="Todos los productos";
   btnTodas.className = "btn-categoria";
 
   btnTodas.addEventListener("click", () => {
