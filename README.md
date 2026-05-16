@@ -4,6 +4,9 @@
 
 Este proyecto es una aplicación de catálogo y carrito de compras para una tienda de alimentos, desarrollada con **Vite** y **TypeScript**. La aplicación permite navegar por diferentes categorías de productos, realizar búsquedas en tiempo real y gestionar un carrito de compras interactivo.
 
+
+Enlace a video https://drive.google.com/file/d/1wHseymV7_X1mXCL2Ma4eZGE98-ckG4zU/view?usp=sharing
+
 ---
 ### Funcionalidades principales:
 - **Catálogo Dinámico**: Listado de productos renderizados a partir de una base de datos local predefinida (`src/data/data.ts`).
